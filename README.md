@@ -190,3 +190,8 @@ sudo cat /var/jenkins_home/secrets/initialAdminPassword # change the path base i
 		- `Docker Pipeline`
 	- After click install and restart jenkins.
 - Then create a new Job.
+	- Click new item or create new job.
+	- Enter name of your pipeline then select pipeline then click okay.
+	- Scroll down to bottom then change `Pipeline Script` -> `Pipeline script from scm`
+	- Choose `scm` -> `git`
+	- Paste your github url you want to use or deploy
