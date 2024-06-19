@@ -1,4 +1,5 @@
 
+
 # Basic DevSecOps Monolith Laravel API Application
 
 This is a step by step setup of DevSecOps of Monolith application. If you're starting to learn DevOps this is a good basic practices on developing application with CI/CD integration and Code Analysis and Monitoring application. We Will setup a simple application using **Laravel** with **Docker** for development, **Jenkins** with **SonarQube** and **Trivy** for CI/CD automation and Code Analysis and also you can use **Kubernetes** along side with **argoCD** if you want to deploy your application with **Kubernetes**, and lastly **Prometheus** and **Grafana** for monitoring. 
@@ -153,3 +154,39 @@ docker-compose run <service_name> php artisan key:generate
 - after you configure all you can now see your application in port `http://yourip:8000` but your port for your application is depends on your docker configuration.
 
 Step 4: Go and SSH to your jenkins/sonarqube server to configure you jenkins and plugins installation.
+- You can access/browse your jenkins server with port 8080 `http://yourip:8080`; make sure that your jenkins is started check the status of your jenkins.
+```bash
+sudo systemctl status jenkins
+```
+- In the first glance of the application you can see something like this.
+
+<img title="jenkins first glance/open" alt="jenkins first glance/open" src="https://www.oreilly.com/api/v2/epubs/9781788479356/files/assets/ffea4b1e-fe03-4065-9258-d0159729fa58.png">
+
+- Then go to your terminal to get the initial password that is located in `/var/jenkins_home/secrets/initialAdminPassword` or copy the path that is displayed in your jenkins app.
+
+```bash
+sudo cat /var/jenkins_home/secrets/initialAdminPassword # change the path base in your jenskins app.
+```
+- After just click `continue`.
+- Then install the plugins of your choice if you're using jenkins for the first time I recommend to install suggested plugins.
+
+<img title="Plugins installation" alt="Plugins installation" src="https://user-images.githubusercontent.com/75182/41753242-6a9e4ec2-75cc-11e8-9eb7-524b732064d9.png">
+
+- Wait until the installation is done.
+
+<img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9pbWctYXNrLmNzZG4ubmV0L3VwbG9hZC8yMDE2MTIvMTEvMTQ4MTQyMTc3M185NTczNTQucG5n?x-oss-process=image/format,png">
+
+- If the installation will fail just click `retry`.
+- Then after just fill up the form for the admin user of your jenkins app.
+
+<img src="https://miro.medium.com/v2/resize:fit:1400/1*CER3iMbg3RxVjVqW1oEbOA.png">
+
+- After click `Click and Continue` and you're will redirected to the dashboard of the jenkins.
+- We will install some plugins that we will use in our jenkins.
+	- Go to `Manage Jenkins` -> `Plugins` -> `Available`
+	- Install the following plugins:
+		- `SSH Agent`
+		- `Docker `
+		- `Docker Pipeline`
+	- After click install and restart jenkins.
+- Then create a new Job.
