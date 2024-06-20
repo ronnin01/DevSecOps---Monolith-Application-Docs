@@ -146,6 +146,8 @@ docker-compose run <service_name> composer install
 ```bash
 sudo chown -R $USER:www-data storage bootstrap/cache
 sudo chmod -R 775 storage bootstrap/cache
+sudo chown -R $(whoami) ~/laravel-app # change directory of your app
+sudo chmod -R 775 ~/laravel-app # change directory of your app
 ```
 - Then generate key, change you `<service_name>` to you specific service.
 ```bash
